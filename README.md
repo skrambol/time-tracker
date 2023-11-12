@@ -1,6 +1,6 @@
-# Countable Modern Django
+# Time Tracker
 
-A Dockerized boilerplate for a Django API driven web app, with Vue CLI and Postgres based on Countable's standards [here](https://countable-web.github.io/ops/#engineering)
+A time tracker built with [Countable Modern Django](https://github.com/countable-web/countable-modern-django)
 
 ## Build and Deploy
 
@@ -9,7 +9,7 @@ Prerequisites:
 
 Clone the repo:
 ```
-git clone https://github.com/countable-web/countable-modern-django
+git clone https://github.com/skrambol/countable-exam
 cd countable-modern-django
 ```
 
@@ -27,48 +27,10 @@ docker-compose up
 The frontend app runs Vue and is served at `http://localhost`.
 The backend app runs Django and is served at `http://localhost/api`.
 
-To set up a superuser in Django, run the following command:
+To set up a superuser in Django and load a test data, run the following command:
 
 ```
-docker-compose exec web ./setup.sh
+docker-compose run web ./manage.py loaddata dump.json
 ```
 
 You can visit the Django admin at `http://localhost/admin`. The username is `admin`, password is `pass`.
-
-## Features
-
-  * Fully Dockerized, and configured with docker-compose
-  * Uses PostgreSQL
-  * API-Driven Django. We don't use Django's templates for anything.
-  * Uses Nuxt.js
-  * Proxies all ports through port 80, the default, including websockets, so there's no need to worry about the port of anything when developing.
-
-## TODO: 
-
-  * Disable all caching / PWA behaviour by default. It slows down code challenge scenarios.
-  * Update all libraries / deps.
-  * Commit the .vscode rules for auto formatting.
-
-## Testing
-
-To run unit tests for the frontend app, run the following command:
-```
-docker-compose exec frontend yarn test:unit
-```
-
-To run unit tests for the backend app, run the following command:
-```
-docker-compose exec web python manage.py test
-```
-
-## Linting
-
-Linting for the backend app is done using pylint. You can run the linter using the following command:
-```
-docker-compose exec web pylint --load-plugins pylint_django web
-```
-
-Linting is done automatically for the frontend app when it builds. You can also manually run the linter using the following command:
-```
-docker-compose exec frontend yarn lint
-```
