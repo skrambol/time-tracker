@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'web',
+    'users',
     'rest_framework',
 ]
 
@@ -169,3 +170,5 @@ LOGGING = {
         }
     }
 }
+
+AUTH_USER_MODEL = 'users.User'
