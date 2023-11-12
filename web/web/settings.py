@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'web',
     'users',
+    'projects',
     'rest_framework',
 ]
 
