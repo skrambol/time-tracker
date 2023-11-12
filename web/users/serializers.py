@@ -16,5 +16,4 @@ class UserTimeTrackingSerializer(serializers.ModelSerializer):
 
 
     def to_representation(self, instance):
-        print(instance)
         return super().to_representation(instance)

@@ -16,4 +16,4 @@ class TimeTracking(models.Model):
     date_modified = models.DateTimeField(auto_now=True)
     date = models.DateField()
     hours = models.IntegerField(validators=[MinValueValidator(1)])
-    description = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True, null=True)

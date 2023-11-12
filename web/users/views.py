@@ -1,9 +1,15 @@
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework import generics
-from projects.models import TimeTracking
 from users.models import User
 
 from users.serializers import UserSerializer, UserTimeTrackingSerializer
 
+
+class CsrfExemptSessionAuthentication(SessionAuthentication):
+    def enforce_csrf(self, request):
+        # disable CSRF, i do not know how to handle it in frontend
+        # huge security risk
+        return
 
 class UserListView(generics.ListAPIView):
     queryset = User.objects.filter(is_staff=False).all()
@@ -12,6 +18,7 @@ class UserListView(generics.ListAPIView):
 class UserTimeTrackingListView(generics.ListCreateAPIView):
     queryset = User.objects.filter(is_staff=False)
     serializer_class = UserTimeTrackingSerializer
+    authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication,)
 
     def get_queryset(self):
         qs = super().get_queryset().get(id=self.kwargs.get("id")).timetracking_set.all()

@@ -8,6 +8,13 @@ function getUsers() {
   return request.then(response => response.data)
 }
 
+function addTimeTracking({project, user, date, hours, description}) {
+  const request = axios.post(`${baseUrl}${user}/time_tracking`, {project, date, hours, description})
+
+  return request.then(response => response.data)
+}
+
 export default {
   getUsers,
+  addTimeTracking,
 }
