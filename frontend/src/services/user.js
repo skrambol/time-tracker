@@ -14,7 +14,14 @@ function addTimeTracking({project, user, date, hours, description}) {
   return request.then(response => response.data)
 }
 
+function getTimeTrackings({user}) {
+  const request = axios.get(`${baseUrl}${user}/time_tracking`)
+
+  return request.then(response => response.data)
+}
+
 export default {
   getUsers,
   addTimeTracking,
+  getTimeTrackings,
 }

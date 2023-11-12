@@ -21,7 +21,7 @@ class UserTimeTrackingListView(generics.ListCreateAPIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication,)
 
     def get_queryset(self):
-        qs = super().get_queryset().get(id=self.kwargs.get("id")).timetracking_set.all()
+        qs = super().get_queryset().get(id=self.kwargs.get("id")).timetracking_set.all().order_by("project")
 
         return qs
 
