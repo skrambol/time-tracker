@@ -9,8 +9,8 @@ Prerequisites:
 
 Clone the repo:
 ```
-git clone https://github.com/skrambol/countable-exam
-cd countable-modern-django
+git clone https://github.com/skrambol/time-tracker
+cd time-tracker
 ```
 
 You will need to create a Docker Compose override file from one of the templates (`dc.dev.yml` or `dc.prod.yml`).  
